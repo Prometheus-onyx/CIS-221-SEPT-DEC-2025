@@ -1,0 +1,255 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'FStore.css' %}">
+    <link rel="icon" href="https://img.icons8.com/?size=100&id=GnODgj39wOZm&format=png&color=000000" type="image/png">
+    <title>Fashion Store | Trendy Clothes & Accessories</title>
+</head>
+<body>
+    <!-- Header -->
+     <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo"> Fashion<span>Store</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#sale">Sale</a></li>
+                        <li><a href="#benefits">Benefits</a></li>
+                     <!--<li><a href="login.html">Login</a></li>-->
+                        <li class="cart-icon"> 🛒
+                            <span class="cart-count">3</span>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+     </header>
+
+     <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1><span class="hero-content-span"> Discover Your Perfect Style</span></h1>
+                <p>Explore our latest collection of trendy fashion for every occasion</p>
+                <a href="#products" class="btn">Shop Now</a>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+        </section>
+        <!-- Categories Section -->
+         <section class="section" id="categories">
+            <div class="container">
+                <div class="section-title">
+                    <h2> Shop by Category</h2>
+                </div>
+                <div class="category">
+                    <!-- This Django loop iterates over different categories-->
+                    {% for category in categories %}
+                    <div class="category-card">
+                        <div class="category-img">
+                            <img src={{category.image_url}} alt="Women's Fashion">
+                        </div>
+                        <div class="category-info">
+                            <h3> {{category.name}} </h3>
+                            <p> {{category.description}} </p>
+                            <a href="#" class="btn" style="margin-top: 15px; padding: 8px 20px;">Shop Now</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+            </div>
+         </section>
+
+         <!-- Featured Products -->
+          <section class="section featured-products" id="products">
+            <div class="container">
+                <div class="section-title">
+                    <h2> Featured Products</h2>
+                </div>
+                <div class="products-grid">
+                    <!-- This Django loop iterates over different products-->
+                    {% for product in products %}
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src={{product.image_url}} alt="Summer Dress">
+                            <span class="product-badge"> 105 items rem</span>
+                        </div>
+                        <div class="product-info">
+                            <h3> {{product.name}} </h3>
+                            <div class="product-price">
+                                <span class="current-price">${{product.curr_price}}</span>
+                                <span class="original-price">${{product.orig_price}}</span>
+                            </div>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+          </section>
+
+          <!-- Sale Offers -->
+           <section class="section sale-offers" id="sale">
+            <div class="container">
+                <div class="section-title">
+                    <h2> Hot Sale Offers</h2>
+                </div>
+                <table class="offers-table">
+                    <thead>
+                        <tr>
+                            <th>Sale Event</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Discount</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Summer Clearance</td>
+                            <td>July 15, 2023</td>
+                            <td>July 30, 2023</td>
+                            <td><span class="discount-badge">Up to 50% OFF</span></td>
+                            <td>Get ready for summer with our exclusive clearance sale on selected summer apparel and accessories.</td>
+                        </tr>
+                        <tr>
+                            <td>Back to School</td>
+                            <td>August 1, 2023</td>
+                            <td>August 15, 2023</td>
+                            <td><span class="discount-badge">Up to 30% OFF</span></td>
+                            <td>Prepare for the new school year with discounts on backpacks, stationery, and casual wear.</td>
+                        </tr>
+                        <tr>
+                            <td>Winter Clearance</td>
+                            <td>December 15, 2023</td>
+                            <td>December 31, 2023</td>
+                            <td><span class="discount-badge">Up to 40% OFF</span></td>
+                            <td>Get ready for the winter season with our exclusive clearance sale on selected winter apparel and accessories.</td>
+                        </tr>
+                        <tr>
+                            <td>Holiday Specials</td>
+                            <td>December 20, 2023</td>
+                            <td>January 5, 2024</td>
+                            <td><span class="discount-badge">Up to 25% OFF</span></td>
+                            <td>Celebrate the holiday season with special discounts on festive clothing and gift items.</td>
+                        </tr>
+                        <tr>
+                            <td>Flash Sale</td>
+                            <td>Every Friday</td>
+                            <td>24 Hours Only</td>
+                            <td><span class="discount-badge">Up to 60% OFF</span></td>
+                            <td>Don't miss our weekly flash sales every Friday, featuring deep discounts on select items for 24 hours only.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+           </section>
+           <!-- Benefits Section -->
+            <section class="section benefits" id="benefits">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Why come shop with us ?</h2>
+                    </div>
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-icon"> 🚚 </div>
+                            <h3>Free Shipping</h3>
+                            <p>Enjoy free shipping on all orders over $50. Fast delivery to your doorstep.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">↩️</div>
+                            <h3>Easy Returns</h3>
+                            <p>Not satisfied? Return any item within 30 days for a full refund.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">💳</div>
+                            <h3>Secure Payment</h3>
+                            <p>Your payment information is safe with our encrypted checkout process.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">⭐</div>
+                            <h3>Quality Guarantee</h3>
+                            <p>We stand behind the quality of our products with a satisfaction guarantee.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <footer>
+                <div class="container">
+                    <div class="footer-content">
+                        <div class="footer-column">
+                            <h3>About FashionStore</h3>
+                            <p>Your one-stop shop for the latest trends in fashion. We offer a wide range of clothing and accessories for all styles and occasions.</p>
+                            <div class="social-links">
+                                <a href="#"><img width="50" height="50" src="https://img.icons8.com/ios-filled/50/facebook-new.png" alt="facebook-new"/></a>
+                                <a href="#"><img width="48" height="48" src="https://img.icons8.com/color/48/instagram-new--v1.png" alt="instagram-new--v1"/></a>
+                                <a href="#"><img width="50" height="50" src="https://img.icons8.com/ios-filled/50/twitterx--v1.png" alt="twitterx--v1"/></a>
+                                <a href="#"><img width="50" height="50" src="https://img.icons8.com/ios-filled/50/tiktok--v1.png" alt="tiktok--v1"/></a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#categories">Categories</a></li>
+                            <li><a href="#products">Products</a></li>
+                            <li><a href="#sale">Sale</a></li>
+                            <li><a href="#benefits">Benefits</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Customer Service</h3>
+                        <ul>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Returns</a></li>
+                            <li><a href="#">Shipping Info</a></li>
+                            <li><a href="#">Track Order</a></li>
+                            <li><a href="#">FAQs</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Contact Info</h3>
+                        <ul>
+                            <li>📍 11 FashAvenue, Maseno, Kisumu</li>
+                            <li>📞 +254 702 896 370</li>
+                            <li><a href="mailto:stevebickookumu@gmail.com">✉️ stevebickookumu@gmail.com </a></li>
+                            <li>🕒 Mon-Sat: 9AM-9PM, Sun: 11AM-6PM</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2025 FashionStore. All rights reserved.</p>
+                </div>
+            </footer>
+    </main>
+</body>
+<script>
+    // Simple cart functionality
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', function () {
+        const cartCount = document.querySelector('.cart-count');
+        let count = parseInt(cartCount.textContent);
+        cartCount.textContent = count + 1;
+
+        // Simple animation
+        this.textContent = 'Added!';
+        this.style.background = '#4CAF50';
+
+        setTimeout(() => {
+            this.textContent = 'Add to Cart';
+            this.style.background = '#6a11cb';
+        }, 1500);
+    });
+});
+</script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="{% static 'Slideshow.jsx' %}" type="module" > </script>
+<script src="{% static 'CartFunc.jsx' %}" type="module" > </script>
+</html>
